@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>한중다리 · 韩中桥</title>
+  <style>
+    /* ── Reset & Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR',
+                   'Noto Sans SC', sans-serif;
+      background: #f5f7fa;
+      color: #222;
+      line-height: 1.6;
+    }
+
+    /* ── Header ── */
+    header {
+      background: linear-gradient(135deg, #c0392b 0%, #e74c3c 50%, #d35400 100%);
+      color: #fff;
+      text-align: center;
+      padding: 60px 24px 48px;
+    }
+
+    header .badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.4);
+      border-radius: 999px;
+      padding: 4px 16px;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      margin-bottom: 20px;
+    }
+
+    header h1 {
+      font-size: clamp(2rem, 6vw, 3.2rem);
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+
+    header h1 .sub {
+      display: block;
+      font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+      font-weight: 400;
+      opacity: 0.75;
+      margin-top: 4px;
+      letter-spacing: 0.06em;
+    }
+
+    header .tagline {
+      margin-top: 20px;
+      font-size: clamp(0.95rem, 2.5vw, 1.15rem);
+      font-weight: 500;
+      opacity: 0.95;
+    }
+
+    header .tagline-zh {
+      display: block;
+      font-size: 0.82rem;
+      opacity: 0.7;
+      margin-top: 4px;
+    }
+
+    /* ── Section shared ── */
+    section {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 48px 24px;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #c0392b;
+      border-left: 5px solid #e74c3c;
+      padding-left: 12px;
+      margin-bottom: 6px;
+    }
+
+    .section-title-zh {
+      font-size: 0.8rem;
+      color: #888;
+      padding-left: 17px;
+      margin-bottom: 28px;
+    }
+
+    /* ── Cards ── */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 32px 24px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      border-top: 4px solid #e74c3c;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.13);
+    }
+
+    .card-icon {
+      font-size: 2.4rem;
+      margin-bottom: 14px;
+    }
+
+    .card-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #c0392b;
+    }
+
+    .card-title-zh {
+      font-size: 0.75rem;
+      color: #aaa;
+      margin-top: 2px;
+      margin-bottom: 10px;
+    }
+
+    .card-desc {
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    /* ── Schedule Table ── */
+    .schedule-wrap {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      overflow: hidden;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+    }
+
+    thead {
+      background: #c0392b;
+      color: #fff;
+    }
+
+    thead th {
+      padding: 14px 18px;
+      text-align: left;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+
+    thead th .th-zh {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 400;
+      opacity: 0.75;
+      margin-top: 2px;
+    }
+
+    tbody tr {
+      border-bottom: 1px solid #f0f0f0;
+      transition: background 0.15s;
+    }
+
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: #fff5f5; }
+
+    tbody td {
+      padding: 14px 18px;
+      color: #333;
+    }
+
+    tbody td:first-child {
+      font-weight: 600;
+      color: #c0392b;
+      white-space: nowrap;
+    }
+
+    /* ── Footer / Button ── */
+    footer {
+      text-align: center;
+      padding: 40px 24px 56px;
+    }
+
+    .join-btn {
+      background: linear-gradient(135deg, #c0392b, #e74c3c);
+      color: #fff;
+      border: none;
+      border-radius: 999px;
+      padding: 16px 48px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      box-shadow: 0 4px 18px rgba(192, 57, 43, 0.35);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+
+    .join-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(192, 57, 43, 0.45);
+    }
+
+    .join-btn:active { transform: translateY(0); }
+
+    .join-btn .btn-zh {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 400;
+      opacity: 0.82;
+      margin-top: 3px;
+      letter-spacing: 0.04em;
+    }
+
+    footer .copy {
+      margin-top: 24px;
+      font-size: 0.78rem;
+      color: #bbb;
+    }
+
+    /* ── Divider ── */
+    .divider {
+      border: none;
+      border-top: 1px solid #e8e8e8;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══ HEADER ══ -->
+  <header>
+    <div class="badge">🇰🇷 ↔ 🇨🇳 언어교환 동아리 · 语言交换社团</div>
+    <h1>
+      한중다리
+      <span class="sub">韩中桥</span>
+    </h1>
+    <p class="tagline">
+      한국어와 중국어를 서로 가르치며 함께 성장합니다
+      <span class="tagline-zh">互教韩语和中文，共同成长</span>
+    </p>
+  </header>
+
+  <!-- ══ ACTIVITIES ══ -->
+  <section id="activities">
+    <h2 class="section-title">주요 활동</h2>
+    <p class="section-title-zh">主要活动</p>
+
+    <div class="cards">
+
+      <div class="card">
+        <div class="card-icon">🗣️</div>
+        <div class="card-title">주간 언어교환</div>
+        <div class="card-title-zh">每周语言交换</div>
+        <p class="card-desc">
+          매주 한국어·중국어 원어민 파트너와 1:1로 대화하며
+          실전 회화 실력을 키웁니다.<br>
+          <small style="color:#aaa">每周与母语伙伴1对1对话，提升实战口语能力。</small>
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">📚</div>
+        <div class="card-title">전공 과제 스터디</div>
+        <div class="card-title-zh">专业作业学习小组</div>
+        <p class="card-desc">
+          전공 과제를 함께 해결하며 언어 실력과
+          학업 역량을 동시에 향상시킵니다.<br>
+          <small style="color:#aaa">共同完成专业作业，同步提升语言与学业能力。</small>
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🎎</div>
+        <div class="card-title">문화 체험 행사</div>
+        <div class="card-title-zh">文化体验活动</div>
+        <p class="card-desc">
+          한국과 중국의 전통문화·현대문화를 직접 체험하며
+          상호 이해를 넓힙니다.<br>
+          <small style="color:#aaa">亲身体验韩中传统与现代文化，增进相互理解。</small>
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ══ SCHEDULE ══ -->
+  <section id="schedule">
+    <h2 class="section-title">이번 달 일정</h2>
+    <p class="section-title-zh">本月活动日程</p>
+
+    <div class="schedule-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>날짜 <span class="th-zh">日期</span></th>
+            <th>활동 <span class="th-zh">活动</span></th>
+            <th>장소 <span class="th-zh">地点</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>11월 15일</td>
+            <td>주간 언어교환 &nbsp;<small style="color:#aaa">每周语言交换</small></td>
+            <td>학생회관 302호 &nbsp;<small style="color:#aaa">学生会馆302室</small></td>
+          </tr>
+          <tr>
+            <td>11월 22일</td>
+            <td>전공 과제 스터디 &nbsp;<small style="color:#aaa">专业作业学习小组</small></td>
+            <td>중앙도서관 세미나실 &nbsp;<small style="color:#aaa">中央图书馆研讨室</small></td>
+          </tr>
+          <tr>
+            <td>11월 29일</td>
+            <td>문화 체험 행사 &nbsp;<small style="color:#aaa">文化体验活动</small></td>
+            <td>국제교류관 1층 홀 &nbsp;<small style="color:#aaa">国际交流馆一楼大厅</small></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ══ -->
+  <footer>
+    <button class="join-btn" onclick="showJoinInfo()">
+      가입 문의
+      <span class="btn-zh">入会咨询</span>
+    </button>
+    <p class="copy">© 2026 한중다리 · 韩中桥. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function showJoinInfo() {
+      alert(
+        '가입 문의는 동아리 회장에게 전달해 주세요.\n' +
+        '入会咨询请联系社长。'
+      );
+    }
+  </script>
+
+</body>
+</html>
+
